@@ -18,8 +18,7 @@ window.onload = function() {
     currentPoster = (typeof post['from'] != 'undefined') ? post['from']['name'] : '';
     currentDate = moment(post['date']).format('MMM Do YYYY');
 
-    post['message'] = post['message'].replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-
+    post['message'] = post['message'].replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\\n/g, "<br>");
 
     if(previousDate != currentDate) {
       parsedTemplate += dateTemplate({date: post['date']});
