@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.1/pure-min.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+      <!--[if lt IE 7]>
+          <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+      <![endif]-->
+
+      <div id="postsBlock"></div>
+
+      <script id="dateTemplate" type="text/template">
+        <article class="newDate clearfix">
+          <p><%= moment(date).format('dddd, MMMM Do YYYY') %></p>
+        </article>
+      </script>
+
+      <script id="postTemplate" type="text/template">
+        <article class="<%= cssClass %> clearfix">
+          <div class='post'>
+            <% if(message != "") { %>
+              <p class="date"><%= moment(date).format('MMM Do, h:mm:ss a') %></p>
+              <p class="fromName"><span><%= from.name %></span></p>
+              <p class="message"><%= message %></p>
+            <% } %>
+          </div>
+          <% if(typeof file != 'undefined') { %>
+            <div class="file">
+              <p class="date">
+                <% if(message === "") { %>
+                  <%= moment(date).format('MMM Do YYYY, h:mm:ss a') %>
+                <% } %>
+              </p>
+              <p class="fromName">
+                <% if(message === "") { %>
+                  <span><%= from.name %></span>
+                <% } %>
+              </p>
+              <p>
+                <a href="<%= file.url %>"><%= file.name %></a>
+                <span class="fileSize"><%= numeral(file.size).format('0b') %></span>
+              </p>
+            </div>
+          <% } %>
+        </article>
+      </script>
+
+      <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery-1.8.0.min.js"></script>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
+      <script src="js/main.js"></script>
+    </body>
+</html>
